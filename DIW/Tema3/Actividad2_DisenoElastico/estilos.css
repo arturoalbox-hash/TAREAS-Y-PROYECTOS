@@ -1,0 +1,41 @@
+/* ===== Tema 3 - Actividad 2: Diseño elástico =====
+   Todas las medidas van en em, así la página crece o
+   se encoge según el tamaño de la letra del navegador. */
+
+/* Página centrada con un ancho de 60em */
+body {
+    width: 60em;
+    margin: 0 auto;
+}
+
+/* Título principal centrado */
+h1 {
+    text-align: center;
+}
+
+/* Columna izquierda: datos del libro (16em) */
+#lateral {
+    float: left;
+    width: 16em;
+}
+
+/* Columna derecha: descripción y contenido (el resto, 44em) */
+#principal {
+    margin-left: 16em;
+    width: 44em;
+    display: flow-root; /* para que su título quede a la misma altura que el de la izquierda */
+}
+
+/* Lista del contenido del libro en tres columnas del mismo ancho */
+#principal ul {
+    column-count: 3;
+    column-gap: 0.25em;
+    list-style: none;
+    padding: 0;
+}
+
+/* Cada apartado empieza en su propia columna */
+#principal li {
+    break-inside: avoid;
+    break-after: column;
+}

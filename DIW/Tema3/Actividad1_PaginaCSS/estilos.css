@@ -1,0 +1,123 @@
+/* ===== Tema 3 - Actividad 1: Página web con hojas de estilo CSS ===== */
+
+/* Texto de toda la página: negro, Arial y 12 puntos */
+body {
+    color: #000000;
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    margin: 0 auto;
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+/* Títulos: otro color y el doble de tamaño que el texto (12pt x 2 = 24pt) */
+h1, h2, h3 {
+    color: #1f3c88;
+    font-size: 24pt;
+}
+
+/* ---------- Cabecera ---------- */
+header {
+    text-align: center;
+    border-bottom: 3px solid #1f3c88;
+    padding: 10px 0;
+}
+
+header h1 {
+    margin-bottom: 0;
+}
+
+.eslogan {
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* ---------- Menú ---------- */
+nav {
+    text-align: center;
+    padding: 10px 0;
+}
+
+nav a {
+    color: #000000;
+    text-decoration: none;
+    margin: 0 8px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Diseños: las tres camisetas en fila ---------- */
+.galeria {
+    display: flex;
+    gap: 20px;
+}
+
+.producto {
+    flex: 1;
+    margin: 0;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.producto img {
+    width: 100%;
+    max-width: 250px;
+}
+
+.producto h3 {
+    margin: 10px 0 5px;
+}
+
+/* ---------- Listado de productos alineado a la izquierda ---------- */
+#productos ul {
+    text-align: left;
+}
+
+#productos li {
+    margin-bottom: 5px;
+}
+
+/* ---------- Tabla ---------- */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #999999;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #e8f1fb;
+}
+
+/* ---------- Enlace al buscador ---------- */
+
+/* Sin visitar: cursiva y gris */
+.buscador a:link {
+    color: gray;
+    font-style: italic;
+}
+
+/* Visitado: rojo, negrita y subrayado con dos líneas.
+   Nota: por privacidad, los navegadores actuales solo dejan cambiar
+   el color en :visited, así que en la práctica solo se verá el rojo. */
+.buscador a:visited {
+    color: red;
+    font-weight: bold;
+    text-decoration: underline double;
+}
+
+/* ---------- Pie ---------- */
+footer {
+    margin-top: 30px;
+    padding: 10px 0;
+    border-top: 1px solid #cccccc;
+    text-align: center;
+}
