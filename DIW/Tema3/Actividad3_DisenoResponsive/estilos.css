@@ -1,0 +1,109 @@
+/* ===== Tema 3 - Actividad 3: Diseño responsive =====
+   Primero los estilos para móvil y después, con media queries,
+   los cambios para tablet (600px) y ordenador (1200px). */
+
+body {
+    margin: 0;
+    padding: 0 1em;
+}
+
+.fecha {
+    color: blue;
+}
+
+/* ---------- Móvil (hasta 600px): una columna ---------- */
+
+/* Títulos de cada apartado subrayados con una línea */
+h2 {
+    font-size: 1.2em;
+    border-bottom: 1px solid #999;
+    padding-bottom: 0.1em;
+    margin-bottom: 0.6em;
+}
+
+/* Listas sin viñetas */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 0.7em;
+}
+
+/* El dato en negrita va en la línea de abajo */
+li strong {
+    display: block;
+}
+
+
+/* ---------- Tablet (de 600px a 1200px): dos columnas ---------- */
+@media (min-width: 600px) {
+
+    /* Datos personales a la izquierda y el resto a la derecha */
+    .contenedor {
+        display: flex;
+        gap: 2em;
+    }
+
+    .datos {
+        width: 25%;
+    }
+
+    .historial {
+        flex: 1;
+    }
+
+    h2 {
+        border-bottom: none;
+    }
+
+    /* Formación y experiencia vuelven a tener viñetas y todo en una línea */
+    .historial ul {
+        list-style: disc;
+        padding-left: 1.5em;
+    }
+
+    .historial li {
+        margin-bottom: 0;
+    }
+
+    .historial li strong {
+        display: inline;
+    }
+}
+
+
+/* ---------- Ordenador (desde 1200px): tres columnas ---------- */
+@media (min-width: 1200px) {
+
+    /* Las tres partes una al lado de la otra con el mismo ancho */
+    .datos {
+        width: auto;
+        flex: 1;
+    }
+
+    .historial {
+        flex: 2;
+        display: flex;
+        gap: 2em;
+    }
+
+    .historial .columna {
+        flex: 1;
+    }
+
+    /* Datos personales también con viñetas y en una línea */
+    .datos ul {
+        list-style: disc;
+        padding-left: 1.5em;
+    }
+
+    .datos li {
+        margin-bottom: 0;
+    }
+
+    .datos li strong {
+        display: inline;
+    }
+}

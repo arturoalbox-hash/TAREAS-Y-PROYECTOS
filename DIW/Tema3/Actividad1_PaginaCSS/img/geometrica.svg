@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 260" width="250" height="260">
+<rect width="250" height="260" fill="#fbeeee"/>
+<path d="M60 20 L95 8 Q125 28 155 8 L190 20 L235 65 L205 95 L185 80 L185 245 L65 245 L65 80 L45 95 L15 65 Z" fill="#d9d9d9" stroke="#333" stroke-width="2"/>
+<path d="M95 8 Q125 28 155 8" fill="none" stroke="#333" stroke-width="2"/>
+<polygon points="125,105 160,165 90,165" fill="none" stroke="#e53935" stroke-width="5"/><circle cx="125" cy="148" r="22" fill="none" stroke="#000" stroke-width="5"/><rect x="100" y="175" width="50" height="8" fill="#1e88e5"/>
+</svg>
