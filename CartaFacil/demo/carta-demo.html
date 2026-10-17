@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Chiringuito La Ola · Carta</title>
+  <meta name="description" content="Carta de Chiringuito La Ola con precios y alérgenos.">
+  <meta name="theme-color" content="#0e7490">
+  <style>/* Carta pública: pensada para leerse en el móvil, a pleno sol */
+:root {
+  /* Un solo aspecto claro a propósito: la carta se lee en terraza, a pleno sol */
+  color-scheme: light;
+  --brand: #0e7490;
+  --bg: #fbfaf7;
+  --card: #ffffff;
+  --ink: #1b1f23;
+  --soft: #5d6570;
+  --line: #ebe7df;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 64px; -webkit-text-size-adjust: 100%; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--brand); }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 17px; line-height: 1.5; }
+a { color: var(--brand); }
+.c-wrap { max-width: 680px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+.c-hero {
+  background: var(--brand);
+  color: #fff;
+  padding: 36px 0 30px;
+  position: relative;
+  overflow: hidden;
+}
+.c-hero::after {
+  content: ""; position: absolute; inset: auto -10% -40px -10%; height: 70px;
+  background: var(--bg); border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+.c-hero h1 { margin: 0; font-size: clamp(1.8rem, 7vw, 2.6rem); line-height: 1.1; letter-spacing: -0.02em; position: relative; z-index: 1; }
+.c-tag { margin: 8px 0 18px; opacity: .92; position: relative; z-index: 1; }
+
+.c-nav {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.c-nav-in { display: flex; gap: 8px; overflow-x: auto; padding-block: 10px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); max-width: 680px; margin: 0 auto; scrollbar-width: none; }
+.c-nav-in::-webkit-scrollbar { display: none; }
+.c-nav a {
+  flex: none; text-decoration: none; color: var(--ink); font-weight: 600; font-size: .92rem;
+  padding: 7px 14px; border-radius: 999px; background: var(--card); border: 1px solid var(--line);
+}
+.c-nav a:active, .c-nav a:hover { border-color: var(--brand); color: var(--brand); }
+
+.c-filter { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; margin: 18px 0 4px; }
+.c-filter summary { display: flex; justify-content: space-between; gap: 8px; cursor: pointer; font-weight: 600; list-style: none; }
+.c-filter summary::-webkit-details-marker { display: none; }
+.c-filter-hint { color: var(--brand); font-size: .9rem; }
+.c-filter p { color: var(--soft); font-size: .92rem; margin: 10px 0; }
+.c-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.c-chip input { position: absolute; opacity: 0; pointer-events: none; }
+.c-chip span { display: inline-block; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); font-size: .9rem; cursor: pointer; background: var(--bg); }
+.c-chip input:checked + span { background: #fde8e8; border-color: #e5a3a3; color: #8a1c1c; text-decoration: line-through; }
+.c-chip input:focus-visible + span { outline: 2px solid var(--brand); }
+.c-filter-count:empty { display: none; }
+
+.c-sec { margin-top: 28px; }
+.c-sec h2 { font-size: 1.35rem; margin: 0 0 10px; padding-bottom: 6px; border-bottom: 3px solid var(--brand); display: inline-block; }
+.c-sec ul { list-style: none; margin: 0; padding: 0; background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
+.c-item { padding: 14px 16px; border-bottom: 1px solid var(--line); }
+.c-item:last-child { border-bottom: 0; }
+.c-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.c-item h3 { margin: 0; font-size: 1.05rem; font-weight: 650; }
+.c-price { display: flex; flex-direction: column; align-items: flex-end; white-space: nowrap; line-height: 1.3; font-weight: 700; font-variant-numeric: tabular-nums; }
+.c-half { color: var(--soft); font-weight: 500; font-size: .85rem; }
+.c-desc { margin: 4px 0 0; color: var(--soft); font-size: .95rem; }
+.c-al { margin: 8px 0 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.c-al span { font-size: .78rem; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 2px 9px 2px 6px; display: inline-flex; gap: 4px; align-items: center; }
+.c-al em { font-style: normal; color: var(--soft); }
+.c-item.is-off h3, .c-item.is-off .c-price { opacity: .45; text-decoration: line-through; }
+.c-off { margin: 4px 0 0; font-size: .85rem; font-weight: 600; color: #a33; }
+
+.c-empty { text-align: center; color: var(--soft); padding: 60px 0; }
+.c-foot { margin: 36px 0 40px; text-align: center; color: var(--soft); font-size: .88rem; }
+.c-foot p { margin: 6px 0; }
+.c-contact { display: flex; flex-direction: column; gap: 4px; margin-top: 14px !important; }
+.c-contact a { text-decoration: none; font-weight: 600; }
+.c-powered { margin-top: 22px !important; font-size: .78rem; opacity: .75; }
+.c-msg { text-align: center; padding: 80px 16px; }
+</style>  <style>:root{--brand:#0e7490}</style>
+</head>
+<body>
+  <header class="c-hero">
+    <div class="c-wrap">
+      <h1>Chiringuito La Ola</h1>
+      <p class="c-tag">Pescaíto, arroces y buena sombra frente al mar</p>    </div>
+  </header>
+
+    <nav class="c-nav" aria-label="Secciones de la carta">
+    <div class="c-nav-in">
+      <a href="#s1">Para picar</a><a href="#s2">Pescaíto frito</a><a href="#s3">Arroces (mín. 2 personas)</a><a href="#s4">Postres</a><a href="#s5">Bebidas</a>    </div>
+  </nav>
+  
+  <main class="c-wrap">
+        <details class="c-filter">
+      <summary><span>⚠️ ¿Tienes alguna alergia?</span> <span class="c-filter-hint">Filtrar platos</span></summary>
+      <p>Marca lo que no puedes tomar y ocultaremos los platos que lo contienen.</p>
+      <div class="c-chips">
+                  <label class="c-chip"><input type="checkbox" value="gluten"><span>🌾 Gluten</span></label>
+                  <label class="c-chip"><input type="checkbox" value="crustaceos"><span>🦐 Crustáceos</span></label>
+                  <label class="c-chip"><input type="checkbox" value="huevos"><span>🥚 Huevos</span></label>
+                  <label class="c-chip"><input type="checkbox" value="pescado"><span>🐟 Pescado</span></label>
+                  <label class="c-chip"><input type="checkbox" value="lacteos"><span>🥛 Lácteos</span></label>
+                  <label class="c-chip"><input type="checkbox" value="frutos"><span>🌰 Frutos de cáscara</span></label>
+                  <label class="c-chip"><input type="checkbox" value="apio"><span>🥬 Apio</span></label>
+                  <label class="c-chip"><input type="checkbox" value="sulfitos"><span>🍷 Sulfitos</span></label>
+                  <label class="c-chip"><input type="checkbox" value="moluscos"><span>🦪 Moluscos</span></label>
+              </div>
+      <p class="c-filter-count" aria-live="polite"></p>
+    </details>
+    
+    
+        <section class="c-sec" id="s1">
+      <h2>Para picar</h2>
+      <ul>
+                <li class="c-item" data-al="gluten crustaceos huevos pescado">
+          <div class="c-row">
+            <h3>Ensaladilla rusa</h3>
+            <div class="c-price">
+              <span>9,50 €</span>              <span class="c-half">Media 5,50 €</span>            </div>
+          </div>
+          <p class="c-desc">Con atún, langostinos y picos de pan</p>                    <p class="c-al"><span title="Gluten">🌾<em>Gluten</em></span><span title="Crustáceos">🦐<em>Crustáceos</em></span><span title="Huevos">🥚<em>Huevos</em></span><span title="Pescado">🐟<em>Pescado</em></span></p>        </li>
+                <li class="c-item" data-al="pescado">
+          <div class="c-row">
+            <h3>Tomate aliñado</h3>
+            <div class="c-price">
+              <span>8,00 €</span>                          </div>
+          </div>
+          <p class="c-desc">Tomate de la tierra, ventresca y cebolleta</p>                    <p class="c-al"><span title="Pescado">🐟<em>Pescado</em></span></p>        </li>
+                <li class="c-item" data-al="">
+          <div class="c-row">
+            <h3>Pimientos de padrón</h3>
+            <div class="c-price">
+              <span>7,00 €</span>                          </div>
+          </div>
+          <p class="c-desc">Con sal en escamas</p>                            </li>
+                <li class="c-item" data-al="huevos">
+          <div class="c-row">
+            <h3>Patatas bravas</h3>
+            <div class="c-price">
+              <span>6,50 €</span>              <span class="c-half">Media 4,00 €</span>            </div>
+          </div>
+          <p class="c-desc">Salsa brava de la casa y alioli</p>                    <p class="c-al"><span title="Huevos">🥚<em>Huevos</em></span></p>        </li>
+              </ul>
+    </section>
+        <section class="c-sec" id="s2">
+      <h2>Pescaíto frito</h2>
+      <ul>
+                <li class="c-item" data-al="gluten pescado">
+          <div class="c-row">
+            <h3>Boquerones fritos</h3>
+            <div class="c-price">
+              <span>11,00 €</span>              <span class="c-half">Media 6,50 €</span>            </div>
+          </div>
+          <p class="c-desc">Con limón</p>                    <p class="c-al"><span title="Gluten">🌾<em>Gluten</em></span><span title="Pescado">🐟<em>Pescado</em></span></p>        </li>
+                <li class="c-item" data-al="gluten moluscos">
+          <div class="c-row">
+            <h3>Calamares a la andaluza</h3>
+            <div class="c-price">
+              <span>14,00 €</span>              <span class="c-half">Media 8,00 €</span>            </div>
+          </div>
+          <p class="c-desc">Calamar fresco del día</p>                    <p class="c-al"><span title="Gluten">🌾<em>Gluten</em></span><span title="Moluscos">🦪<em>Moluscos</em></span></p>        </li>
+                <li class="c-item is-off" data-al="gluten pescado sulfitos">
+          <div class="c-row">
+            <h3>Cazón en adobo</h3>
+            <div class="c-price">
+              <span>12,00 €</span>              <span class="c-half">Media 7,00 €</span>            </div>
+          </div>
+          <p class="c-desc">Marinado en vinagre, comino y pimentón</p>          <p class="c-off">Agotado hoy</p>          <p class="c-al"><span title="Gluten">🌾<em>Gluten</em></span><span title="Pescado">🐟<em>Pescado</em></span><span title="Sulfitos">🍷<em>Sulfitos</em></span></p>        </li>
+                <li class="c-item" data-al="gluten crustaceos pescado moluscos">
+          <div class="c-row">
+            <h3>Fritura variada</h3>
+            <div class="c-price">
+              <span>18,00 €</span>                          </div>
+          </div>
+          <p class="c-desc">Boquerón, calamar, cazón y gamba</p>                    <p class="c-al"><span title="Gluten">🌾<em>Gluten</em></span><span title="Crustáceos">🦐<em>Crustáceos</em></span><span title="Pescado">🐟<em>Pescado</em></span><span title="Moluscos">🦪<em>Moluscos</em></span></p>        </li>
+              </ul>
+    </section>
+        <section class="c-sec" id="s3">
+      <h2>Arroces (mín. 2 personas)</h2>
+      <ul>
+                <li class="c-item" data-al="crustaceos huevos pescado moluscos">
+          <div class="c-row">
+            <h3>Arroz a banda</h3>
+            <div class="c-price">
+              <span>15,00 €</span>                          </div>
+          </div>
+          <p class="c-desc">Precio por persona. Con alioli</p>                    <p class="c-al"><span title="Crustáceos">🦐<em>Crustáceos</em></span><span title="Huevos">🥚<em>Huevos</em></span><span title="Pescado">🐟<em>Pescado</em></span><span title="Moluscos">🦪<em>Moluscos</em></span></p>        </li>
+                <li class="c-item" data-al="huevos moluscos">
+          <div class="c-row">
+            <h3>Arroz negro</h3>
+            <div class="c-price">
+              <span>16,00 €</span>                          </div>
+          </div>
+          <p class="c-desc">Precio por persona. Con sepia y alioli</p>                    <p class="c-al"><span title="Huevos">🥚<em>Huevos</em></span><span title="Moluscos">🦪<em>Moluscos</em></span></p>        </li>
+                <li class="c-item" data-al="apio">
+          <div class="c-row">
+            <h3>Paella de verduras</h3>
+            <div class="c-price">
+              <span>13,00 €</span>                          </div>
+          </div>
+          <p class="c-desc">Precio por persona</p>                    <p class="c-al"><span title="Apio">🥬<em>Apio</em></span></p>        </li>
+              </ul>
+    </section>
+        <section class="c-sec" id="s4">
+      <h2>Postres</h2>
+      <ul>
+                <li class="c-item" data-al="gluten huevos lacteos">
+          <div class="c-row">
+            <h3>Tarta de queso</h3>
+            <div class="c-price">
+              <span>5,50 €</span>                          </div>
+          </div>
+          <p class="c-desc">Al horno, con mermelada de frutos rojos</p>                    <p class="c-al"><span title="Gluten">🌾<em>Gluten</em></span><span title="Huevos">🥚<em>Huevos</em></span><span title="Lácteos">🥛<em>Lácteos</em></span></p>        </li>
+                <li class="c-item" data-al="lacteos frutos">
+          <div class="c-row">
+            <h3>Helado artesano</h3>
+            <div class="c-price">
+              <span>4,00 €</span>                          </div>
+          </div>
+          <p class="c-desc">Vainilla, chocolate o limón</p>                    <p class="c-al"><span title="Lácteos">🥛<em>Lácteos</em></span><span title="Frutos de cáscara">🌰<em>Frutos de cáscara</em></span></p>        </li>
+              </ul>
+    </section>
+        <section class="c-sec" id="s5">
+      <h2>Bebidas</h2>
+      <ul>
+                <li class="c-item" data-al="gluten">
+          <div class="c-row">
+            <h3>Caña</h3>
+            <div class="c-price">
+              <span>2,20 €</span>                          </div>
+          </div>
+                              <p class="c-al"><span title="Gluten">🌾<em>Gluten</em></span></p>        </li>
+                <li class="c-item" data-al="sulfitos">
+          <div class="c-row">
+            <h3>Tinto de verano</h3>
+            <div class="c-price">
+              <span>3,50 €</span>                          </div>
+          </div>
+                              <p class="c-al"><span title="Sulfitos">🍷<em>Sulfitos</em></span></p>        </li>
+                <li class="c-item" data-al="">
+          <div class="c-row">
+            <h3>Refresco</h3>
+            <div class="c-price">
+              <span>2,80 €</span>                          </div>
+          </div>
+          <p class="c-desc">Cola, naranja o limón</p>                            </li>
+                <li class="c-item" data-al="">
+          <div class="c-row">
+            <h3>Agua mineral</h3>
+            <div class="c-price">
+              <span>2,00 €</span>                          </div>
+          </div>
+          <p class="c-desc">50 cl</p>                            </li>
+              </ul>
+    </section>
+    
+    <footer class="c-foot">
+      <p>Precios con IVA incluido. Servicio de pan y alioli: 1,50 € por persona.</p>      <p>Si tienes alguna alergia o intolerancia, consulta al personal antes de pedir.</p>
+              <p class="c-contact">
+          <span>📍 Paseo Marítimo s/n</span>          <a href="tel:950000000">📞 950 000 000</a>        </p>
+            <p class="c-powered">Carta digital creada con <a href="http://127.0.0.1:8000">CartaFácil</a></p>
+    </footer>
+  </main>
+
+  <script>
+  (function () {
+    var boxes = document.querySelectorAll('.c-chip input');
+    if (!boxes.length) return;
+    var items = document.querySelectorAll('.c-item');
+    var countEl = document.querySelector('.c-filter-count');
+    function apply() {
+      var sel = Array.prototype.filter.call(boxes, function (b) { return b.checked; }).map(function (b) { return b.value; });
+      var hidden = 0;
+      items.forEach(function (li) {
+        var al = (li.getAttribute('data-al') || '').split(' ');
+        var hide = sel.some(function (s) { return al.indexOf(s) !== -1; });
+        li.hidden = hide;
+        if (hide) hidden++;
+      });
+      document.querySelectorAll('.c-sec').forEach(function (sec) {
+        sec.hidden = !sec.querySelector('.c-item:not([hidden])');
+      });
+      countEl.textContent = sel.length ? hidden + ' platos ocultos por contener lo que has marcado.' : '';
+    }
+    boxes.forEach(function (b) { b.addEventListener('change', apply); });
+  })();
+  </script>
+</body>
+</html>

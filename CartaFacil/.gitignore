@@ -1,0 +1,5 @@
+# Configuración con contraseñas y claves: nunca al repositorio
+app/config.php
+# Datos locales (SQLite de pruebas y correos simulados)
+data/*
+!data/.htaccess

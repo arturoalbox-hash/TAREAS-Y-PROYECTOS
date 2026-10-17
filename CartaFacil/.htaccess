@@ -1,0 +1,21 @@
+# CartaFácil - Apache (la mayoría de hostings compartidos)
+Options -Indexes
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Carta pública bonita: /c/mi-bar  ->  carta.php?r=mi-bar
+  RewriteRule ^c/([a-z0-9\-]+)/?$ carta.php?r=$1 [L,QSA]
+</IfModule>
+
+# Cabeceras de seguridad
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+# No servir archivos sensibles
+<FilesMatch "\.(sql|sqlite|md|log)$">
+  Require all denied
+</FilesMatch>
